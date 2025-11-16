@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prestige - Tienda de Ropa Vintage</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="http://127.0.0.1:5500/index.html">Inicio</a></li>
+                <li><a href="#shop">Tienda</a></li>
+                <li><a href="https://www.instagram.com/prestigeshop731/">Contacto</a></li>
+                <li><a href="#cart" id="cart-link">Carrito (0)</a></li>
+            </ul>
+        </nav>
+        <div class="logo-container">
+            <img src="img/logo_prestige.jpg" alt="Prestige Logo" class="logo">
+        </div>
+    </header>
+    <main>
+        <section id="hero">
+            <div class="hero-content">
+                <h1>P r e s t i g e</h1>
+                <p>Moda Vintage y Urbana</p>
+                <button onclick="showCart()">Descubre Ahora</button>
+            </div>
+        </section>
+        <section id="shop">
+            <h2>Nueva Colección</h2>
+            <div class="product-grid">
+                <div class="product">
+                    <img src="img/chaqueta_vintage.webp" alt="Chaqueta Vintage">
+                    <h3>Chaqueta Vintage</h3>
+                    <p>50€</p>
+                    <button onclick="addToCart('Chaqueta Vintage', 50)">Añadir</button>
+                </div>
+                <div class="product">
+                    <img src="img/t-shirt_vintage.webp" alt="Camiseta Urbana">
+                    <h3>Camiseta vintage</h3>
+                    <p>20€</p>
+                    <button onclick="addToCart('Camiseta Urbana', 20)">Añadir</button>
+                </div>
+                <div class="product">
+                    <img src="img/hoodie_prestige.jpg" alt="Sudadera">
+                    <h3>Sudadera</h3>
+                    <p>40€</p>
+                    <button onclick="addToCart('Sudadera', 40)">Añadir</button>
+                </div>
+                <div class="product">
+                    <img src="img/af1.webp" alt="Zapatillas">
+                    <h3>Zapatillas</h3>
+                    <p>100€</p>
+                    <button onclick="addToCart('Zapatillas', 100)">Añadir</button>
+                </div>
+                <div class="product">
+                    <img src="img/calcetines_prestige.webp" alt="Calcetines">
+                    <h3>Calcetines</h3>
+                    <p>15€</p>
+                    <button onclick="addToCart('Calcetines', 15)">Añadir</button>
+                </div>
+                <div class="product">
+                    <img src="img/vintage_pants.webp" alt="Pantalones">
+                    <h3>Pantalones</h3>
+                    <p>25€</p>
+                    <button onclick="addToCart('Pantalones', 25)">Añadir</button>
+                </div>
+                <div class="product">
+                    <img src="img/belt-vintage.webp" alt="Cinturon">
+                    <h3>Cinturon</h3>
+                    <p>50€</p>
+                    <button onclick="addToCart('Cinturon', 50)">Añadir</button>
+                </div>
+                <!-- Añadir más productos aquí -->
+            </div>
+        </section>
+        <section id="cart" class="cart-section" style="display: none;">
+            <h2>Tu Carrito</h2>
+            <ul id="cart-items"></ul>
+            <p>Total: €<span id="cart-total">0</span></p>
+            <button onclick="showCheckout()">Proceder al Pago</button>
+            <button onclick="clearCart()">Vaciar Carrito</button>
+        </section>
+        <section id="checkout" class="checkout-section" style="display: none;">
+            <h2>Finalizar Compra</h2>
+            <form id="payment-form">
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+                <label for="address">Dirección:</label>
+                <input type="text" id="address" required>
+                <p>Total a Pagar: €<span id="checkout-total">0</span></p>
+                <button type="submit">Confirmar Pago</button>
+            </form>
+            <p id="payment-message"></p>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <p>© 2025 Prestige. Todos los derechos reservados.</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/prestigeshop731/">Instagram</a> | <a
+                    href="https://cdn.dribbble.com/userupload/29575803/file/original-3648eb639deb4a97f84cabd6857f4860.jpg?resize=752x&vertical=center">Inspiracion</a>
+            </div>
+        </div>
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
