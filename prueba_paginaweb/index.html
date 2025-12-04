@@ -2,115 +2,428 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prestige - Tienda de Ropa Vintage</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Prestige - Tienda online de ropa vintage y urbana con estilo único">
+  <meta name="keywords" content="vintage, ropa, urbana, moda, tienda online">
+  <title>Prestige - Tienda de Ropa Vintage</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="http://127.0.0.1:5500/index.html">Inicio</a></li>
-                <li><a href="#shop">Tienda</a></li>
-                <li><a href="https://www.instagram.com/prestigeshop731/">Contacto</a></li>
-                <li><a href="#cart" id="cart-link">Carrito (0)</a></li>
-            </ul>
-        </nav>
-        <div class="logo-container">
-            <img src="img/logo_prestige.jpg" alt="Prestige Logo" class="logo">
+  <!-- Header Section -->
+  <header id="main-header">
+    <nav id="main-nav">
+      <ul>
+        <li><a href="#hero">Inicio</a></li>
+        <li><a href="#shop">Tienda</a></li>
+        <li><a href="#gallery">Galería</a></li>
+        <li><a href="#about">Nosotros</a></li>
+        <li><a href="#contact">Contacto</a></li>
+        <li><a href="#cart" id="cart-link">Carrito (0)</a></li>
+      </ul>
+    </nav>
+    <div class="logo-container">
+      <img src="img/logo-prestige.jpg" alt="Prestige Logo" class="logo">
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="hero">
+      <div class="hero-content">
+        <h1>P R E S T I G E</h1>
+        <p>Moda Vintage y Urbana</p>
+        <button type="button" onclick="scrollToShop()">
+          <i class="fas fa-arrow-down"></i> Descubre Ahora
+        </button>
+      </div>
+    </section>
+
+    <!-- Shop Section with CRUD -->
+    <section id="shop">
+      <h2>Nueva Colección</h2>
+
+      <!-- CREATE/UPDATE - Add/Edit Product Form -->
+      <div class="add-product-section">
+        <h3>
+          <i class="fas fa-plus-circle"></i> Gestionar Productos
+        </h3>
+        <form id="add-product-form" novalidate>
+          <div class="form-group">
+            <label for="product-name">
+              <i class="fas fa-tag"></i> Nombre del producto:
+            </label>
+            <input type="text" id="product-name" name="product-name" placeholder="Ej: Chaqueta Retro">
+            <span class="error-message" id="product-name-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="product-price">
+              <i class="fas fa-euro-sign"></i> Precio (€):
+            </label>
+            <input type="text" id="product-price" name="product-price" placeholder="Ej: 50">
+            <span class="error-message" id="product-price-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="product-image">
+              <i class="fas fa-image"></i> URL de la imagen:
+            </label>
+            <input type="text" id="product-image" name="product-image" placeholder="img/producto.jpg">
+            <span class="error-message" id="product-image-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="product-description">
+              <i class="fas fa-align-left"></i> Descripción:
+            </label>
+            <textarea id="product-description" name="product-description"
+              placeholder="Descripción del producto"></textarea>
+            <span class="error-message" id="product-description-error"></span>
+          </div>
+
+          <button type="submit">
+            <i class="fas fa-plus"></i> Añadir Producto
+          </button>
+        </form>
+      </div>
+
+      <!-- READ - Product Grid -->
+      <div class="product-grid" id="product-grid"></div>
+    </section>
+
+    <!-- Gallery Section - 12 images -->
+    <section id="gallery">
+      <h2>
+        <i class="fas fa-images"></i> Galería de Estilo
+      </h2>
+      <p class="gallery-subtitle">Inspiración vintage y urbana</p>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="img/gallery-1.jpg" alt="Estilo Vintage 1">
+          <div class="gallery-overlay">
+            <span>Estilo Retro</span>
+          </div>
         </div>
-    </header>
-    <main>
-        <section id="hero">
-            <div class="hero-content">
-                <h1>P r e s t i g e</h1>
-                <p>Moda Vintage y Urbana</p>
-                <button onclick="showCart()">Descubre Ahora</button>
-            </div>
-        </section>
-        <section id="shop">
-            <h2>Nueva Colección</h2>
-            <div class="product-grid">
-                <div class="product">
-                    <img src="img/chaqueta_vintage.webp" alt="Chaqueta Vintage">
-                    <h3>Chaqueta Vintage</h3>
-                    <p>50€</p>
-                    <button onclick="addToCart('Chaqueta Vintage', 50)">Añadir</button>
-                </div>
-                <div class="product">
-                    <img src="img/t-shirt_vintage.webp" alt="Camiseta Urbana">
-                    <h3>Camiseta vintage</h3>
-                    <p>20€</p>
-                    <button onclick="addToCart('Camiseta Urbana', 20)">Añadir</button>
-                </div>
-                <div class="product">
-                    <img src="img/hoodie_prestige.jpg" alt="Sudadera">
-                    <h3>Sudadera</h3>
-                    <p>40€</p>
-                    <button onclick="addToCart('Sudadera', 40)">Añadir</button>
-                </div>
-                <div class="product">
-                    <img src="img/af1.webp" alt="Zapatillas">
-                    <h3>Zapatillas</h3>
-                    <p>100€</p>
-                    <button onclick="addToCart('Zapatillas', 100)">Añadir</button>
-                </div>
-                <div class="product">
-                    <img src="img/calcetines_prestige.webp" alt="Calcetines">
-                    <h3>Calcetines</h3>
-                    <p>15€</p>
-                    <button onclick="addToCart('Calcetines', 15)">Añadir</button>
-                </div>
-                <div class="product">
-                    <img src="img/vintage_pants.webp" alt="Pantalones">
-                    <h3>Pantalones</h3>
-                    <p>25€</p>
-                    <button onclick="addToCart('Pantalones', 25)">Añadir</button>
-                </div>
-                <div class="product">
-                    <img src="img/belt-vintage.webp" alt="Cinturon">
-                    <h3>Cinturon</h3>
-                    <p>50€</p>
-                    <button onclick="addToCart('Cinturon', 50)">Añadir</button>
-                </div>
-                <!-- Añadir más productos aquí -->
-            </div>
-        </section>
-        <section id="cart" class="cart-section" style="display: none;">
-            <h2>Tu Carrito</h2>
-            <ul id="cart-items"></ul>
-            <p>Total: €<span id="cart-total">0</span></p>
-            <button onclick="showCheckout()">Proceder al Pago</button>
-            <button onclick="clearCart()">Vaciar Carrito</button>
-        </section>
-        <section id="checkout" class="checkout-section" style="display: none;">
-            <h2>Finalizar Compra</h2>
-            <form id="payment-form">
-                <label for="name">Nombre:</label>
-                <input type="text" id="name" required>
-                <label for="email">Email:</label>
-                <input type="email" id="email" required>
-                <label for="address">Dirección:</label>
-                <input type="text" id="address" required>
-                <p>Total a Pagar: €<span id="checkout-total">0</span></p>
-                <button type="submit">Confirmar Pago</button>
-            </form>
-            <p id="payment-message"></p>
-        </section>
-    </main>
-    <footer>
-        <div class="footer-content">
-            <p>© 2025 Prestige. Todos los derechos reservados.</p>
-            <div class="social-links">
-                <a href="https://www.instagram.com/prestigeshop731/">Instagram</a> | <a
-                    href="https://cdn.dribbble.com/userupload/29575803/file/original-3648eb639deb4a97f84cabd6857f4860.jpg?resize=752x&vertical=center">Inspiracion</a>
-            </div>
+        <div class="gallery-item">
+          <img src="img/gallery-2.jpg" alt="Estilo Vintage 2">
+          <div class="gallery-overlay">
+            <span>Urban Style</span>
+          </div>
         </div>
-    </footer>
-    <script src="js/script.js"></script>
+        <div class="gallery-item">
+          <img src="img/gallery-3.jpg" alt="Estilo Vintage 3">
+          <div class="gallery-overlay">
+            <span>Street Fashion</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="img/gallery-4.jpg" alt="Estilo Vintage 4">
+          <div class="gallery-overlay">
+            <span>Vintage Look</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="img/gallery-5.jpg" alt="Estilo Vintage 5">
+          <div class="gallery-overlay">
+            <span>Classic Style</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="img/gallery-6.webp" alt="Estilo Vintage 6">
+          <div class="gallery-overlay">
+            <span>Modern Vintage</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="img/gallery-7.webp" alt="Estilo Vintage 7">
+          <div class="gallery-overlay">
+            <span>Retro Vibes</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="img/gallery-8.webp" alt="Estilo Vintage 8">
+          <div class="gallery-overlay">
+            <span>Urban Vintage</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="img/gallery-9.webp" alt="Estilo Vintage 9">
+          <div class="gallery-overlay">
+            <span>Street Vintage</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="img/gallery-10.webp" alt="Estilo Vintage 10">
+          <div class="gallery-overlay">
+            <span>Cool Style</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="img/gallery-11.webp" alt="Estilo Vintage 11">
+          <div class="gallery-overlay">
+            <span>Fashion Mix</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="img/gallery-12.webp" alt="Estilo Vintage 12">
+          <div class="gallery-overlay">
+            <span>Prestige Style</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+      <h2>
+        <i class="fas fa-info-circle"></i> Sobre Nosotros
+      </h2>
+      <div class="about-content">
+        <div class="about-text">
+          <h3>Nuestra Historia</h3>
+          <p>Prestige nació en 2020 con la misión de rescatar las mejores piezas vintage y darles una nueva vida. Cada
+            prenda tiene una historia que contar y un estilo único que no encontrarás en ningún otro lugar.</p>
+          <p>Nos especializamos en moda urbana y vintage de calidad, seleccionando cuidadosamente cada artículo para
+            garantizar autenticidad y estilo único. Trabajamos con proveedores de confianza en toda Europa para traerte
+            lo mejor del pasado.</p>
+          <h3>Compromiso con la Sostenibilidad</h3>
+          <p>Nuestro compromiso es con la sostenibilidad y la moda consciente, ofreciendo alternativas a la fast
+            fashion. Cada compra en Prestige es una declaración de estilo y responsabilidad ambiental. Creemos que la
+            moda del futuro es reutilizar el pasado.</p>
+        </div>
+        <div class="about-stats">
+          <div class="stat-box">
+            <i class="fas fa-tshirt"></i>
+            <h4>+5000</h4>
+            <p>Prendas Únicas</p>
+          </div>
+          <div class="stat-box">
+            <i class="fas fa-users"></i>
+            <h4>+2000</h4>
+            <p>Clientes Satisfechos</p>
+          </div>
+          <div class="stat-box">
+            <i class="fas fa-heart"></i>
+            <h4>100%</h4>
+            <p>Moda Sostenible</p>
+          </div>
+          <div class="stat-box">
+            <i class="fas fa-star"></i>
+            <h4>4.8/5</h4>
+            <p>Valoración Media</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2>
+        <i class="fas fa-envelope"></i> Contáctanos
+      </h2>
+      <div class="contact-content">
+        <div class="contact-info">
+          <h3>Información de Contacto</h3>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <p>Calle Vintage 123, Barcelona, España</p>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <p>+34 123 456 789</p>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <p>info@prestige.com</p>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-clock"></i>
+            <p>Lun - Sáb: 10:00 - 20:00</p>
+          </div>
+        </div>
+        <div class="contact-form-container">
+          <h3>Envíanos un Mensaje</h3>
+          <form id="contact-form" novalidate>
+            <div class="form-group">
+              <label for="contact-name">
+                <i class="fas fa-user"></i> Nombre completo:
+              </label>
+              <input type="text" id="contact-name" name="contact-name" placeholder="Tu nombre">
+              <span class="error-message" id="contact-name-error"></span>
+            </div>
+            <div class="form-group">
+              <label for="contact-email">
+                <i class="fas fa-envelope"></i> Email:
+              </label>
+              <input type="email" id="contact-email" name="contact-email" placeholder="tu@email.com">
+              <span class="error-message" id="contact-email-error"></span>
+            </div>
+            <div class="form-group">
+              <label for="contact-subject">
+                <i class="fas fa-tag"></i> Asunto:
+              </label>
+              <input type="text" id="contact-subject" name="contact-subject" placeholder="Asunto del mensaje">
+              <span class="error-message" id="contact-subject-error"></span>
+            </div>
+            <div class="form-group">
+              <label for="contact-message">
+                <i class="fas fa-comment"></i> Mensaje:
+              </label>
+              <textarea id="contact-message" name="contact-message" rows="5" placeholder="Tu mensaje"></textarea>
+              <span class="error-message" id="contact-message-error"></span>
+            </div>
+            <button type="submit">
+              <i class="fas fa-paper-plane"></i> Enviar Mensaje
+            </button>
+          </form>
+          <p id="contact-success-message"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cart Section -->
+    <section id="cart" class="cart-section" style="display: none;">
+      <h2>
+        <i class="fas fa-shopping-cart"></i> Tu Carrito
+      </h2>
+      <ul id="cart-items"></ul>
+      <p class="cart-total">Total: €<span id="cart-total">0</span></p>
+      <div class="cart-buttons">
+        <button type="button" onclick="showCheckout()">
+          <i class="fas fa-credit-card"></i> Proceder al Pago
+        </button>
+        <button type="button" onclick="clearCart()" class="btn-secondary">
+          <i class="fas fa-trash"></i> Vaciar Carrito
+        </button>
+      </div>
+    </section>
+
+    <!-- Checkout Section -->
+    <section id="checkout" class="checkout-section" style="display: none;">
+      <h2>
+        <i class="fas fa-credit-card"></i> Finalizar Compra
+      </h2>
+      <form id="payment-form" novalidate>
+        <div class="form-group">
+          <label for="checkout-name">
+            <i class="fas fa-user"></i> Nombre completo:
+          </label>
+          <input type="text" id="checkout-name" name="checkout-name" placeholder="Juan Pérez">
+          <span class="error-message" id="checkout-name-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="checkout-email">
+            <i class="fas fa-envelope"></i> Email:
+          </label>
+          <input type="email" id="checkout-email" name="checkout-email" placeholder="juan@email.com">
+          <span class="error-message" id="checkout-email-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="checkout-address">
+            <i class="fas fa-map-marker-alt"></i> Dirección completa:
+          </label>
+          <input type="text" id="checkout-address" name="checkout-address" placeholder="Calle, número, piso, ciudad">
+          <span class="error-message" id="checkout-address-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="checkout-phone">
+            <i class="fas fa-phone"></i> Teléfono:
+          </label>
+          <input type="tel" id="checkout-phone" name="checkout-phone" placeholder="612345678">
+          <span class="error-message" id="checkout-phone-error"></span>
+        </div>
+
+        <p class="checkout-total-text">
+          <i class="fas fa-euro-sign"></i> Total a Pagar: €<span id="checkout-total">0</span>
+        </p>
+        <button type="submit">
+          <i class="fas fa-check"></i> Confirmar Pago
+        </button>
+      </form>
+      <p id="payment-message"></p>
+    </section>
+  </main>
+
+  <!-- Footer Section -->
+  <footer id="main-footer">
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>Prestige</h3>
+        <p>Tu tienda de moda vintage y urbana de confianza desde 2020. Cada prenda cuenta una historia.</p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/prestigeshop731/" aria-label="Instagram" target="_blank" rel="noopener">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="#" aria-label="Facebook">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="#" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" aria-label="TikTok">
+            <i class="fab fa-tiktok"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h3>Enlaces Rápidos</h3>
+        <ul>
+          <li><a href="#shop">Tienda</a></li>
+          <li><a href="#gallery">Galería</a></li>
+          <li><a href="#about">Nosotros</a></li>
+          <li><a href="#contact">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Contacto</h3>
+        <ul class="contact-list">
+          <li>
+            <i class="fas fa-map-marker-alt"></i> Canarias, España
+          </li>
+          <li>
+            <i class="fas fa-phone"></i> +34 123 456 789
+          </li>
+          <li>
+            <i class="fas fa-envelope"></i> info@prestige.com
+          </li>
+          <li>
+            <i class="fas fa-clock"></i> Lun-Sáb: 10:00-20:00
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="#">Política de Privacidad</a></li>
+          <li><a href="#">Términos y Condiciones</a></li>
+          <li><a href="#">Envíos y Devoluciones</a></li>
+          <li><a href="#">Política de Cookies</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Prestige. Todos los derechos reservados.</p>
+      <p>
+        Inspiración:
+        <a href="https://cdn.dribbble.com/userupload/29575803/file/original-3648eb639deb4a97f84cabd6857f4860.jpg"
+          target="_blank" rel="noopener">
+          Dribbble Design
+        </a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
 </body>
 
 </html>
